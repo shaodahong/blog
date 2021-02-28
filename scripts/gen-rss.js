@@ -11,14 +11,16 @@ async function generate() {
     feed_url: 'https://biewen.me/feed.xml',
   });
 
-  const posts = await fs.readdir(path.join(__dirname, '..', 'pages', 'posts'));
+  const posts = await fs.readdir(
+    path.join(__dirname, '..', 'pages', 'posts', '2021'),
+  );
 
   await Promise.all(
     posts.map(async (name) => {
       if (name.startsWith('index.')) return;
 
       const content = await fs.readFile(
-        path.join(__dirname, '..', 'pages', 'posts', name),
+        path.join(__dirname, '..', 'pages', 'posts', '2021', name),
       );
       const frontmatter = matter(content);
 
