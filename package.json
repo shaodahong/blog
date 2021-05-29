@@ -12,14 +12,13 @@
   "dependencies": {
     "next": "^10.0.8",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "yarn": "^1.22.10"
+    "react-dom": "^17.0.1"
   },
   "devDependencies": {
-    "gray-matter": "^4.0.2",
-    "nextra": "^0.4.4",
-    "nextra-theme-blog": "^0.1.5",
-    "prettier": "^2.2.1",
+    "gray-matter": "^4.0.3",
+    "nextra": "^0.4.5",
+    "nextra-theme-blog": "^0.1.6",
+    "prettier": "^2.3.0",
     "rss": "^1.2.2"
   }
 }
