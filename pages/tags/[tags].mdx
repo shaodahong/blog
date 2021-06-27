@@ -6,8 +6,9 @@ title: Tagged Posts
 import { useRouter } from 'next/router';
 
 export const TagName = () => {
-  const { tag } = useRouter().query;
-  return tag || null;
+  const { tags } = useRouter().query;
+  console.log(useRouter())
+  return tags || null;
 };
 
 # Posts Tagged with “<TagName/>”
