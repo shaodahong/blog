@@ -25,10 +25,10 @@
     unist-util-visit "^4.0.0"
     vfile "^5.0.0"
 
-"@mdx-js/react@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@mdx-js/react/-/react-2.1.2.tgz#02972f170cd3ad9113ce448245c5f636bb3e750d"
-  integrity sha512-52e3DTJBrjsw3U51ZCdZ3N1IBaqnbzLIngCSXpKtiYiGr7PIqp3/P/+kym0MPTwBL/y9ZBmCieD8FyrXuEDrRw==
+"@mdx-js/react@^2.1.5":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@mdx-js/react/-/react-2.2.1.tgz#5a70592418d52b1b01538c37e795034601c96ec5"
+  integrity sha512-YdXcMcEnqZhzql98RNrqYo9cEhTTesBiCclEtoiQUbJwx87q9453GTapYU6kJ8ZZ2ek1Vp25SiAXEFy5O/eAPw==
   dependencies:
     "@types/mdx" "^2.0.0"
     "@types/react" ">=16"
@@ -1148,10 +1148,10 @@ nanoid@^3.3.4:
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.4.tgz#730b67e3cd09e2deacf03c027c81c9d9dbc5e8ab"
   integrity sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw==
 
-next-themes@^0.2.0-beta.2:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/next-themes/-/next-themes-0.2.0.tgz#fdc507f61e95b3ae513dee8d4783bcec8c02e3a3"
-  integrity sha512-myhpDL4vadBD9YDSHiewqvzorGzB03N84e+3LxCwHRlM/hiBOaW+UsKsQojQAzC7fdcJA0l2ppveXcYaVV+hxQ==
+next-themes@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/next-themes/-/next-themes-0.2.1.tgz#0c9f128e847979daf6c67f70b38e6b6567856e45"
+  integrity sha512-B+AKNfYNIzh0vqQQKqQItTS8evEouKD7H5Hj3kmuPERwddR2TxvDSFZuTj6T7Jfn1oyeUyJMydPl1Bkxkh0W7A==
 
 next@^13.0.6:
   version "13.0.6"
@@ -1178,13 +1178,13 @@ next@^13.0.6:
     "@next/swc-win32-ia32-msvc" "13.0.6"
     "@next/swc-win32-x64-msvc" "13.0.6"
 
-nextra-theme-blog@^2.0.0-beta.4:
-  version "2.0.0-beta.17"
-  resolved "https://registry.yarnpkg.com/nextra-theme-blog/-/nextra-theme-blog-2.0.0-beta.17.tgz#109431ef1fd42ee53dee0be96e524722192a5347"
-  integrity sha512-dO0AP2jtSmOlPx9Mz4JGYzVUAMzrZcJ2PV52C1p/kNhe6DFEcPJJ13hb9p07VaXTNbXHLP1WOvGbwKVPogohXg==
+nextra-theme-blog@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/nextra-theme-blog/-/nextra-theme-blog-2.0.2.tgz#1711d8c3d05c7dc28dffdbe4903d5cf31d2e4198"
+  integrity sha512-5SG46AGz4+o2nia5lEThT8sOUZc1777obHh5bx4G1hf4gIMyi+UXc4AVkkpTrwpJypISupw+4BuNuEiW3Ze7Nw==
   dependencies:
-    "@mdx-js/react" "^2.1.2"
-    next-themes "^0.2.0-beta.2"
+    "@mdx-js/react" "^2.1.5"
+    next-themes "^0.2.1"
 
 nextra@^2.0.0-beta.4:
   version "2.0.0-beta.17"
