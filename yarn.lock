@@ -1424,10 +1424,10 @@ nextra-theme-blog@^2.0.3:
     "@mdx-js/react" "^2.1.5"
     next-themes "^0.2.1"
 
-nextra@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/nextra/-/nextra-2.0.3.tgz#9075523d7113e17303881164c108d30832e720aa"
-  integrity sha512-GttZMwfHiVcrnVMnN2PKq2mS6YoQ0zrbzRYS838WYfzUpjIPCR6L8rJbAEd00kcrJNM1MvSCxONOTqGDDjW7YA==
+nextra@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/nextra/-/nextra-2.1.0.tgz#11645c294535e46d95815d22bfc3814113612d69"
+  integrity sha512-8bq/TW8wv8H8D6UAokb9WKhnYeoxKG7c8ikWF1n6k3kOO9m0PLG+guTwqkWre28jJyziljc3i/Fnr3k4HiB9Ow==
   dependencies:
     "@mdx-js/mdx" "^2.1.5"
     "@napi-rs/simple-git" "^0.1.8"
@@ -1915,16 +1915,7 @@ unist-util-visit@^3.1.0:
     unist-util-is "^5.0.0"
     unist-util-visit-parents "^4.0.0"
 
-unist-util-visit@^4.0.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/unist-util-visit/-/unist-util-visit-4.1.0.tgz#f41e407a9e94da31594e6b1c9811c51ab0b3d8f5"
-  integrity sha512-n7lyhFKJfVZ9MnKtqbsqkQEk5P1KShj0+//V7mAcoI6bpbUjh3C/OG8HVD+pBihfh6Ovl01m8dkcv9HNqYajmQ==
-  dependencies:
-    "@types/unist" "^2.0.0"
-    unist-util-is "^5.0.0"
-    unist-util-visit-parents "^5.0.0"
-
-unist-util-visit@^4.1.1:
+unist-util-visit@^4.0.0, unist-util-visit@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/unist-util-visit/-/unist-util-visit-4.1.1.tgz#1c4842d70bd3df6cc545276f5164f933390a9aad"
   integrity sha512-n9KN3WV9k4h1DxYR1LoajgN93wpEi/7ZplVe02IoB4gH5ctI1AaF2670BLHQYbwj+pY83gFtyeySFiyMHJklrg==
