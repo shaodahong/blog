@@ -17,7 +17,7 @@
   "devDependencies": {
     "gray-matter": "^4.0.3",
     "nextra": "^2.0.3",
-    "nextra-theme-blog": "^2.0.3",
+    "nextra-theme-blog": "^2.2.3",
     "prettier": "^2.8.1",
     "rss": "^1.2.2"
   }
