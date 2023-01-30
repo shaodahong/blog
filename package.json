@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "gray-matter": "^4.0.3",
-    "nextra": "^2.0.3",
+    "nextra": "^2.2.14",
     "nextra-theme-blog": "^2.0.3",
     "prettier": "^2.8.3",
     "rss": "^1.2.2"
