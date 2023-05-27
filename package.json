@@ -10,15 +10,16 @@
     "build": "node ./scripts/gen-rss.js && next build"
   },
   "dependencies": {
-    "next": "^13.4.1",
+    "@vercel/analytics": "^1.0.1",
+    "next": "^13.4.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "gray-matter": "^4.0.3",
-    "nextra": "^2.5.0",
-    "nextra-theme-blog": "^2.5.0",
-    "prettier": "^2.8.3",
+    "nextra": "^2.6.1",
+    "nextra-theme-blog": "^2.6.1",
+    "prettier": "^2.8.8",
     "rss": "^1.2.2"
   }
 }
