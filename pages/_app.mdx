@@ -21,19 +21,6 @@ export default function Nextra({ Component, pageProps }) {
           type="font/woff2"
           crossOrigin="anonymous"
         />
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=UA-175790070-1"
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-        
-          gtag('config', 'UA-175790070-1');`,
-          }}
-        />
       </Head>
       <Component {...pageProps} />
       <Analytics />
