@@ -32,8 +32,10 @@ Stripe 的收款服务在国内的使用者主要是一些个人开发者（独�
 
 注册完成之后，对于开发者和非开发者来说都可以非常简洁的快速集成到自己的网站或者系统中，比如下面通过支付链接脚本的方式，我们可以快速的在网站上集成 Stripe 的支付功能。
 
+import Script from "next/script";
+
 <div style={{ display: "flex", justifyContent: "center" }}>
-  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+  <Script async src="https://js.stripe.com/v3/buy-button.js"></Script>
 
 <stripe-buy-button
 buy-button-id="buy_btn_1NTyUdAGCxZjZOOu3SYnM8T6"
