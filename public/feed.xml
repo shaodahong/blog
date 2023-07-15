@@ -4,16 +4,8 @@
         <description><![CDATA[Bie Wen]]></description>
         <link>https://biewen.me</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Mon, 30 Jan 2023 14:23:27 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 15 Jul 2023 03:40:02 GMT</lastBuildDate>
         <atom:link href="https://biewen.me/feed.xml" rel="self" type="application/rss+xml"/>
-        <item>
-            <title><![CDATA[迟来的 2020 年终总结]]></title>
-            <description><![CDATA[2021 年 2 月的最后一天，准备总结下自己的 2020]]></description>
-            <link>/posts/2020-final</link>
-            <guid isPermaLink="true">/posts/2020-final</guid>
-            <category><![CDATA[年终总结]]></category>
-            <pubDate>Sun, 28 Feb 2021 00:00:00 GMT</pubDate>
-        </item>
         <item>
             <title><![CDATA[关于 30 岁的破局]]></title>
             <description><![CDATA[细聊下 《迟来的 2020 年终总结》 中最后提到的关键字【破局】，同时这也在规划我即将到的 30 岁。]]></description>
@@ -23,20 +15,36 @@
             <pubDate>Sat, 06 Mar 2021 00:00:00 GMT</pubDate>
         </item>
         <item>
-            <title><![CDATA[Git 修改文件大小写]]></title>
-            <description><![CDATA[今天和同事聊到 Git 是不区分大小写的，所以在写 React 组件的时候如果名称由 login 变成 Login，是看不到 git status 变化的。]]></description>
-            <link>/posts/git-change-capitalization</link>
-            <guid isPermaLink="true">/posts/git-change-capitalization</guid>
-            <category><![CDATA[Git]]></category>
-            <pubDate>Wed, 21 Apr 2021 00:00:00 GMT</pubDate>
-        </item>
-        <item>
             <title><![CDATA[面试 - 上篇]]></title>
             <description><![CDATA[《迟来的 2020 年终总结》说到今年要换工作，所以 3 月 1 号开始就约面试了，年前有了一个大概的规划，所以过年就用了两天调休，剩下的几天调休准备出去看看机会。]]></description>
             <link>/posts/inteview-part-1</link>
             <guid isPermaLink="true">/posts/inteview-part-1</guid>
             <category><![CDATA[面试]]></category>
             <pubDate>Thu, 04 Mar 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[迟来的 2020 年终总结]]></title>
+            <description><![CDATA[2021 年 2 月的最后一天，准备总结下自己的 2020]]></description>
+            <link>/posts/2020-final</link>
+            <guid isPermaLink="true">/posts/2020-final</guid>
+            <category><![CDATA[年终总结]]></category>
+            <pubDate>Sun, 28 Feb 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[威联通 NAS 的初次尝试]]></title>
+            <description><![CDATA[这次购买 NAS 并非是刚需，只是为了尝试一下，加上手上有早些年买的一块 8T 硬盘闲置，所以本着不浪费的心态就在 618 的活动入手了，话说现在硬盘比机器贵是什么鬼……]]></description>
+            <link>/posts/qnap-nas-first-attempt</link>
+            <guid isPermaLink="true">/posts/qnap-nas-first-attempt</guid>
+            <category><![CDATA[无题]]></category>
+            <pubDate>Sun, 27 Jun 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Git 修改文件大小写]]></title>
+            <description><![CDATA[今天和同事聊到 Git 是不区分大小写的，所以在写 React 组件的时候如果名称由 login 变成 Login，是看不到 git status 变化的。]]></description>
+            <link>/posts/git-change-capitalization</link>
+            <guid isPermaLink="true">/posts/git-change-capitalization</guid>
+            <category><![CDATA[Git]]></category>
+            <pubDate>Wed, 21 Apr 2021 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[懂得珍惜，接受遗憾]]></title>
@@ -53,14 +61,6 @@
             <guid isPermaLink="true">/posts/only-high-end-no-small-and-beautiful</guid>
             <category><![CDATA[无题]]></category>
             <pubDate>Thu, 08 Apr 2021 00:00:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[威联通 NAS 的初次尝试]]></title>
-            <description><![CDATA[这次购买 NAS 并非是刚需，只是为了尝试一下，加上手上有早些年买的一块 8T 硬盘闲置，所以本着不浪费的心态就在 618 的活动入手了，话说现在硬盘比机器贵是什么鬼……]]></description>
-            <link>/posts/qnap-nas-first-attempt</link>
-            <guid isPermaLink="true">/posts/qnap-nas-first-attempt</guid>
-            <category><![CDATA[无题]]></category>
-            <pubDate>Sun, 27 Jun 2021 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[入职两月、成长和生活]]></title>
