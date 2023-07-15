@@ -1,0 +1,43 @@
+---
+title: Stripe 开通经验
+date: 2023-07-15
+---
+
+[Stripe](https://stripe.com/) 作为一家帮助个人和公司收款的公司，其产品和服务在国内也是非常受欢迎的。
+
+Stripe 的收款服务在国内的使用者主要是一些个人开发者（独立开发者）和小公司，个人开发者和一些小的公司想要做境外生意其实绕不开的就是收款，而很多支付服务商对大陆是不提供服务的，有些提供了服务但是需要公司注册，都是很不方便的，而 Stripe 就是一个很好的选择。
+
+进入 [注册地址](https://dashboard.stripe.com/register) 我们快速的注册一个账户，注册完成后需要激活账户才能使用，点击激活
+
+![Alt text](./image.png)
+
+开通商户分类这里可以选择个人、公司或非盈利组织，个人和公司的开通流程是不一样的，个人开通的话只需要填写一些个人信息就可以了，公司开通的话需要填写公司信息，还需要上传一些公司的证件，这里就不详细介绍了。
+
+根据选择的地区，美国账户需要
+
+- 美国银行账号
+- 美国手机号
+- 美国地址
+- 美国 SSN（社会安全号码）
+
+香港账户需要
+
+- 香港银行账号
+- 香港手机号/大陆手机号
+- 香港地址
+- 香港身份证
+
+为了简化流程，SSN 和香港身份证这里注册我们可以先跳过，后面再补充身份证明。
+
+注册完成之后，对于开发者和非开发者来说都可以非常简洁的快速集成到自己的网站或者系统中，比如下面通过支付链接脚本的方式，我们可以快速的在网站上集成 Stripe 的支付功能。
+
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+
+<stripe-buy-button
+buy-button-id="buy_btn_1NTyUdAGCxZjZOOu3SYnM8T6"
+publishable-key="pk_live_51NTgulAGCxZjZOOusrWGffOPwRHtbo1iJRmouFU1fR3gK4gKzRkUknRdqIXQFthqAFtLvTyGNG0lfXbOSStn0pk500hgX9MqK7"
+
+> </stripe-buy-button>
+
+</div>
