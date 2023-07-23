@@ -10,6 +10,9 @@ dependencies:
   react:
     specifier: ^18.2.0
     version: 18.2.0
+  react-cusdis:
+    specifier: ^2.1.3
+    version: 2.1.3(react-dom@18.2.0)(react@18.2.0)
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
@@ -26,7 +29,7 @@ devDependencies:
     version: 2.10.0(next@13.4.10)(react-dom@18.2.0)(react@18.2.0)
   nextra-theme-blog:
     specifier: ^2.10.0
-    version: 2.10.0(next@13.4.10)(nextra@2.10.0)(react-dom@18.2.0)(react@18.2.0)
+    version: 2.10.0(next@13.4.10)(nextra@2.10.0)(react-cusdis@2.1.3)(react-dom@18.2.0)(react@18.2.0)
   prettier:
     specifier: ^3.0.0
     version: 3.0.0
@@ -2051,7 +2054,7 @@ packages:
       - '@babel/core'
       - babel-plugin-macros
 
-  /nextra-theme-blog@2.10.0(next@13.4.10)(nextra@2.10.0)(react-dom@18.2.0)(react@18.2.0):
+  /nextra-theme-blog@2.10.0(next@13.4.10)(nextra@2.10.0)(react-cusdis@2.1.3)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-WvkaN2V12Jy+MqaZzrpukr9IPlbG+jTolKCCZi1hC5RyQ1CDPBONe6ETAsaX2XcUvcsivQHnRujixWSKjew/9A==}
     peerDependencies:
       next: '>=9.5.3'
@@ -2067,6 +2070,7 @@ packages:
       next-themes: 0.2.1(next@13.4.10)(react-dom@18.2.0)(react@18.2.0)
       nextra: 2.10.0(next@13.4.10)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
+      react-cusdis: 2.1.3(react-dom@18.2.0)(react@18.2.0)
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
@@ -2255,6 +2259,15 @@ packages:
       minimist: 1.2.8
       strip-json-comments: 2.0.1
     dev: false
+
+  /react-cusdis@2.1.3(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-fUJOAUY7a3y21fNzlRWUSTr/ZMsejQAYWIWdsNuBPPZHbUrBvke/8Gw4OL5Mlrth7jLw8VTNssX0WBX5/prorQ==}
+    peerDependencies:
+      react: ^17.0.0
+      react-dom: ^17.0.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
 
   /react-dom@18.2.0(react@18.2.0):
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}

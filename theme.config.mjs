@@ -1,6 +1,14 @@
+import dynamic from "next/dynamic";
+
+const Cusdis = dynamic(() => import("nextra-theme-blog/cusdis"));
+
 const YEAR = new Date().getFullYear();
 
 export default {
+  cusdis: {
+    appId: "24822426-2ff6-44f7-aaaa-42852d81f11b",
+  },
+  comments: <Cusdis />,
   darkMode: true,
   footer: (
     <small style={{ display: "block", marginTop: "8rem" }}>
