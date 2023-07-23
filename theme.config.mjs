@@ -1,6 +1,4 @@
-import dynamic from "next/dynamic";
-
-const Cusdis = dynamic(() => import("nextra-theme-blog/cusdis"));
+import Cusdis from "nextra-theme-blog/cusdis";
 
 const YEAR = new Date().getFullYear();
 
