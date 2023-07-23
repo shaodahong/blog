@@ -21,6 +21,8 @@ async function generate() {
     posts.map(async (postName) => {
       const lastSlashIndex = postName.lastIndexOf("/");
       const name = postName.substring(lastSlashIndex + 1);
+      const pagePostLastSlashIndex = postName.lastIndexOf("pages/");
+      const url = postName.substring(pagePostLastSlashIndex + 5);
 
       if (name.startsWith("index.")) return;
 
@@ -32,7 +34,7 @@ async function generate() {
 
       return {
         title: frontmatter.data.title,
-        url: "/posts/" + name.replace(/\.mdx?/, ""),
+        url: url.replace(/\.mdx?/, ""),
         date: frontmatter.data.date,
         description: frontmatter.data.description,
         categories: frontmatter.data.tag?.split(", ") ?? "",
