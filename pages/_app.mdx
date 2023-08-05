@@ -1,13 +1,19 @@
-import "nextra-theme-blog/style.css";
-import Head from "next/head";
-import { Analytics } from "@vercel/analytics/react";
+import 'nextra-theme-blog/style.css'
+import Head from 'next/head'
+import { Analytics } from '@vercel/analytics/react'
+import Script from 'next/script'
 
-import "../styles/main.css";
+import '../styles/main.css'
 
 export default function Nextra({ Component, pageProps }) {
   return (
     <>
       <Head>
+        <Script
+          async
+          src="https://analytics.umami.is/script.js"
+          data-website-id="6204fa0a-7412-4773-a5c9-d0c16a9bf287"
+        ></Script>
         <link
           rel="alternate"
           type="application/rss+xml"
@@ -18,5 +24,5 @@ export default function Nextra({ Component, pageProps }) {
       <Component {...pageProps} />
       <Analytics />
     </>
-  );
+  )
 }
