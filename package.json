@@ -24,5 +24,6 @@
     "nextra-theme-blog": "^2.10.0",
     "prettier": "^3.0.0",
     "rss": "^1.2.2"
-  }
+  },
+  "packageManager": "pnpm@8.10.5"
 }
