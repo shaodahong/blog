@@ -1,8 +1,8 @@
+import 'styles/globals.css'
 import 'nextra-theme-blog/style.css'
 import Head from 'next/head'
 import { Analytics } from '@vercel/analytics/react'
-
-import '../styles/main.css'
+import Script from 'next/script'
 
 export default function Nextra({ Component, pageProps }) {
   return (
@@ -14,14 +14,15 @@ export default function Nextra({ Component, pageProps }) {
           title="RSS"
           href="/feed.xml"
         />
-        <script
-          async
-          src="https://analytics.umami.is/script.js"
-          data-website-id="6204fa0a-7412-4773-a5c9-d0c16a9bf287"
-        ></script>
       </Head>
       <Component {...pageProps} />
       <Analytics />
+      <Script
+        async
+        src="https://analytics.umami.is/script.js"
+        data-website-id="6204fa0a-7412-4773-a5c9-d0c16a9bf287"
+        strategy="beforeInteractive"
+      ></Script>
     </>
   )
 }

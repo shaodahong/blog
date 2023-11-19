@@ -1,8 +1,13 @@
 import Cusdis from 'nextra-theme-blog/cusdis'
+import { TimelineList } from '@/components/ui/timeline-list.tsx'
 
 const YEAR = new Date().getFullYear()
 
+/** @type {import('nextra-theme-blog').NextraBlogTheme} */
 export default {
+  components: {
+    TimelineList: TimelineList,
+  },
   cusdis: {
     appId: '24822426-2ff6-44f7-aaaa-42852d81f11b',
   },
