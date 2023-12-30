@@ -8,11 +8,9 @@ export default function Nextra({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <link
-          rel="alternate"
-          type="application/rss+xml"
-          title="RSS"
-          href="/feed.xml"
+        <meta
+          name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover"
         />
       </Head>
       <Component {...pageProps} />

@@ -14,7 +14,7 @@ export default {
   comments: <Cusdis />,
   darkMode: true,
   head: ({ title, meta }) => {
-    const realTitle = `${title} - 别问`
+    const realTitle = `${title} | 别问`
     const description = meta.description || '别问'
     return (
       <>
@@ -30,6 +30,18 @@ export default {
         <meta property="og:title" content={realTitle}></meta>
         <meta property="og:description" content={description} />
         <meta property="og:url" content="https://biewen.me/"></meta>
+        <link
+          rel="icon"
+          href="/favicon.ico"
+          type="image/x-icon"
+          sizes="48x48"
+        ></link>
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="RSS"
+          href="/feed.xml"
+        />
       </>
     )
   },
