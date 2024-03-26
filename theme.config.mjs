@@ -22,11 +22,14 @@ export default {
         <meta name="description" content={meta.description} />
         {meta.tag && <meta name="keywords" content={meta.tag} />}
         {meta.author && <meta name="author" content={meta.author} />}
-        <meta property="twitter:image" content="/logo.png"></meta>
+        <meta
+          property="twitter:image"
+          content={`/api/og?title=${realTitle}`}
+        ></meta>
         <meta property="twitter:card" content="summary_large_image"></meta>
         <meta property="twitter:title" content={realTitle}></meta>
         <meta property="twitter:description" content={description}></meta>
-        <meta property="og:image" content="/logo.png"></meta>
+        <meta property="og:image" content={`/api/og?title=${realTitle}`}></meta>
         <meta property="og:title" content={realTitle}></meta>
         <meta property="og:description" content={description} />
         <meta property="og:url" content="https://biewen.me/"></meta>
