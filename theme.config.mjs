@@ -28,13 +28,13 @@ export default {
         <meta property="twitter:description" content={description}></meta>
         <meta
           property="twitter:image"
-          content={`https://biewen.me/api/og?title=${decodeURIComponent(realTitle)}`}
+          content={`https://biewen.me/api/og?title=${encodeURIComponent(realTitle)}`}
         ></meta>
         <meta property="og:title" content={realTitle}></meta>
         <meta property="og:description" content={description} />
         <meta
           property="og:image"
-          content={`https://biewen.me/api/og?title=${decodeURIComponent(realTitle)}`}
+          content={`https://biewen.me/api/og?title=${encodeURIComponent(realTitle)}`}
         ></meta>
         <link
           rel="icon"
