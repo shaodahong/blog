@@ -23,6 +23,7 @@ export default {
         {meta.tag && <meta name="keywords" content={meta.tag} />}
         {meta.author && <meta name="author" content={meta.author} />}
 
+        <meta property="description" content="Welcome to the biewen.me Blog." />
         <meta property="twitter:card" content="summary_large_image"></meta>
         <meta property="twitter:title" content={realTitle}></meta>
         <meta property="twitter:description" content={description}></meta>
