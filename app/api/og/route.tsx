@@ -8,56 +8,79 @@ export async function GET(request: Request) {
 
     // ?title=<title>
     const hasTitle = searchParams.has('title')
-    const title = hasTitle
-      ? searchParams.get('title')?.slice(0, 100)
-      : 'BieWen'
+    const title = hasTitle ? searchParams.get('title')?.slice(0, 100) : 'BieWen'
 
     return new ImageResponse(
       (
         <div
           style={{
-            backgroundColor: 'black',
-            backgroundSize: '150px 150px',
             height: '100%',
             width: '100%',
             display: 'flex',
-            textAlign: 'center',
+            flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            flexDirection: 'column',
-            flexWrap: 'nowrap',
+            backgroundColor: '#fff',
+            fontSize: 32,
+            fontWeight: 600,
           }}
         >
           <div
             style={{
+              left: 42,
+              top: 42,
+              position: 'absolute',
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center',
-              justifyItems: 'center',
             }}
           >
-            <img
-              alt="Vercel"
-              height={200}
-              src="data:image/svg+xml,%3Csvg width='116' height='100' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M57.5 0L115 100H0L57.5 0z' /%3E%3C/svg%3E"
-              style={{ margin: '0 30px' }}
-              width={232}
-            />
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 48 48"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M24 44C35.0457 44 44 35.0457 44 24C44 12.9543 35.0457 4 24 4C12.9543 4 4 12.9543 4 24C4 35.0457 12.9543 44 24 44Z"
+                fill="none"
+                stroke="#333"
+                stroke-width="4"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M31 18V19"
+                stroke="#333"
+                stroke-width="4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M17 18V19"
+                stroke="#333"
+                stroke-width="4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M17 32L31 30"
+                stroke="#333"
+                stroke-width="4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <span
+              style={{
+                marginLeft: 8,
+                fontSize: 20,
+              }}
+            >
+              biewen.com
+            </span>
           </div>
-          <div
-            style={{
-              fontSize: 60,
-              fontStyle: 'normal',
-              letterSpacing: '-0.025em',
-              color: 'white',
-              marginTop: 30,
-              padding: '0 120px',
-              lineHeight: 1.4,
-              whiteSpace: 'pre-wrap',
-            }}
-          >
-            {title}
-          </div>
+
+          <div>{title}</div>
         </div>
       ),
       {
