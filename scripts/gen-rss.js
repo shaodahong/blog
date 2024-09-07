@@ -8,7 +8,6 @@ const fg = require('fast-glob')
 async function generate() {
   const feed = new RSS({
     title: 'Bie Wen',
-    description: 'feedId:54391012631814144+userId:54390002374487040',
     site_url: 'https://biewen.me',
     feed_url: 'https://biewen.me/feed.xml',
   })
