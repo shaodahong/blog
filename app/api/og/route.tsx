@@ -76,7 +76,7 @@ export async function GET(request: Request) {
                 fontSize: 20,
               }}
             >
-              biewen.com
+              biewen.me
             </span>
           </div>
 

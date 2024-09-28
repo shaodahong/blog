@@ -34,7 +34,7 @@ async function generate() {
 
       return {
         title: frontmatter.data.title,
-        url: url.replace(/\.mdx?/, ''),
+        url: 'https://biewen.me' + url.replace(/\.mdx?/, ''),
         date: frontmatter.data.date,
         description: frontmatter.data.description,
         categories: frontmatter.data.tag?.split(', ') ?? '',
