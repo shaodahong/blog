@@ -37,5 +37,5 @@
     "rss": "^1.2.2",
     "typescript": "5.6.2"
   },
-  "packageManager": "pnpm@9.10.0"
+  "packageManager": "pnpm@9.14.4"
 }
