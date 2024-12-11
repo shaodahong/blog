@@ -27,7 +27,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@types/node": "20.14.2",
+    "@types/node": "20.17.10",
     "@types/react": "^18.3.3",
     "fast-glob": "^3.3.2",
     "gray-matter": "^4.0.3",
