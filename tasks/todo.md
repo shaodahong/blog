@@ -26,34 +26,24 @@
   [package.json](/Volumes/990pro/Workspace/Github/blog/package.json),
   [pnpm-lock.yaml](/Volumes/990pro/Workspace/Github/blog/pnpm-lock.yaml)
 - [x] Phase 1 validation: `pnpm build`, `pnpm audit --prod`, and runtime HTTP checks for `/`, `/posts`, `/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93`, `/uses`, and `/api/og?title=test` all passed. `pnpm audit --prod --json` now reports `0` vulnerabilities.
-- [ ] Phase 2: replace Pages Router entrypoints with App Router equivalents for Nextra 4.
-- [ ] Replace [pages/_app.mdx](/Volumes/990pro/Workspace/Github/blog/pages/_app.mdx) with an `app/layout.(t|j)sx` root layout that imports global CSS, `nextra-theme-blog/style.css`, analytics scripts, and footer/head configuration.
-- [ ] Replace [pages/index.mdx](/Volumes/990pro/Workspace/Github/blog/pages/index.mdx) with `app/page.mdx`.
-- [ ] Replace [pages/uses/index.mdx](/Volumes/990pro/Workspace/Github/blog/pages/uses/index.mdx) with `app/uses/page.mdx`.
-- [ ] Replace [pages/posts/index.md](/Volumes/990pro/Workspace/Github/blog/pages/posts/index.md) with `app/posts/page.(t|j)sx` using Nextra 4 blog helpers for post/tag listing.
-- [ ] Replace [pages/tags/[tag].mdx](/Volumes/990pro/Workspace/Github/blog/pages/tags/[tag].mdx) with `app/tags/[tag]/page.(t|j)sx` and `generateStaticParams()`.
-- [ ] Decide content layout strategy before touching posts:
-  keep posts in a dedicated `content/` tree for Nextra 4, or
-  convert each post under `pages/posts/**` into `app/posts/**/page.mdx`.
-- [ ] If using the `content/` strategy, update RSS and tag helpers to read from the Nextra 4 content/page map APIs instead of filesystem globs over `pages/posts/**`.
-- [ ] If using the `page.mdx` strategy, preserve existing permalinks like `/posts/2024/japan-9-days-8-nights-free-and-easy-travel` exactly.
-- [ ] Replace [theme.config.mjs](/Volumes/990pro/Workspace/Github/blog/theme.config.mjs) with the Nextra 4 blog theme layout pattern. Re-check custom components such as [@/components/ui/timeline-list.tsx](/Volumes/990pro/Workspace/Github/blog/@/components/ui/timeline-list.tsx) and [@/components/ui/hover-card.tsx](/Volumes/990pro/Workspace/Github/blog/@/components/ui/hover-card.tsx) inside MDX.
-- [ ] Remove the standalone RSS build script path in [scripts/gen-rss.js](/Volumes/990pro/Workspace/Github/blog/scripts/gen-rss.js) once `/rss.xml` is served from an App Router route handler.
-- [ ] Add `app/rss.xml/route.(t|j)s` and port feed generation there; do not keep `public/feed.xml` as the source of truth after migration.
-- [ ] Keep [app/api/og/route.tsx](/Volumes/990pro/Workspace/Github/blog/app/api/og/route.tsx), but verify the route still works after the root layout and metadata changes.
-- [ ] Phase 3: upgrade to `React 19`, `@types/react@19`, `@types/react-dom@19`, `nextra@4`, and `nextra-theme-blog@4` after the App Router structure exists.
-- [ ] Audit for React 19 compatibility before that step:
-  custom JSX runtime assumptions,
-  legacy refs/defaultProps usage,
-  and third-party packages with stale peer ranges such as `react-cusdis`.
-- [ ] Either replace `react-cusdis` with a React 19-compatible comments integration, or pin and verify it explicitly in an isolated test branch before the main migration branch.
-- [ ] Phase 4: migrate styling from Tailwind 3 to Tailwind 4.
-- [ ] Update [styles/globals.css](/Volumes/990pro/Workspace/Github/blog/styles/globals.css) from `@tailwind` directives to the Tailwind 4 import model and review any utility renames.
-- [ ] Update [postcss.config.js](/Volumes/990pro/Workspace/Github/blog/postcss.config.js) to use `@tailwindcss/postcss`; remove `autoprefixer` if the final Tailwind 4 setup no longer needs it.
-- [ ] Revisit [tailwind.config.ts](/Volumes/990pro/Workspace/Github/blog/tailwind.config.ts) because some Tailwind 3-era configuration may move to CSS-first configuration in v4.
+- [x] Phase 2: replace Pages Router entrypoints with App Router equivalents using Nextra 4's `content/` directory while keeping `React 18`.
+- [x] Replace [pages/_app.mdx](/Volumes/990pro/Workspace/Github/blog/pages/_app.mdx) with [app/layout.tsx](/Volumes/990pro/Workspace/Github/blog/app/layout.tsx), importing global CSS, `nextra-theme-blog` layout primitives, analytics scripts, and site metadata.
+- [x] Replace [pages/index.mdx](/Volumes/990pro/Workspace/Github/blog/pages/index.mdx) and [pages/uses/index.mdx](/Volumes/990pro/Workspace/Github/blog/pages/uses/index.mdx) by moving MDX content into [content/index.mdx](/Volumes/990pro/Workspace/Github/blog/content/index.mdx) and [content/uses/index.mdx](/Volumes/990pro/Workspace/Github/blog/content/uses/index.mdx), rendered through [app/[[...mdxPath]]/page.tsx](/Volumes/990pro/Workspace/Github/blog/app/[[...mdxPath]]/page.tsx).
+- [x] Preserve existing post permalinks by moving all post content from `pages/posts/**` into `content/posts/**` and rendering it through the Nextra 4 catch-all route.
+- [x] Replace [pages/posts/index.md](/Volumes/990pro/Workspace/Github/blog/pages/posts/index.md) with [app/posts/page.tsx](/Volumes/990pro/Workspace/Github/blog/app/posts/page.tsx) and [app/posts/get-posts.ts](/Volumes/990pro/Workspace/Github/blog/app/posts/get-posts.ts), using Nextra page-map helpers for post and tag listings.
+- [x] Replace [pages/tags/[tag].mdx](/Volumes/990pro/Workspace/Github/blog/pages/tags/[tag].mdx) with [app/tags/[tag]/page.tsx](/Volumes/990pro/Workspace/Github/blog/app/tags/[tag]/page.tsx) and `generateStaticParams()`.
+- [x] Replace [theme.config.mjs](/Volumes/990pro/Workspace/Github/blog/theme.config.mjs) with [mdx-components.tsx](/Volumes/990pro/Workspace/Github/blog/mdx-components.tsx) and the app layout integration, then remove the obsolete theme config file. [@/components/ui/timeline-list.tsx](/Volumes/990pro/Workspace/Github/blog/@/components/ui/timeline-list.tsx) and [@/components/ui/hover-card.tsx](/Volumes/990pro/Workspace/Github/blog/@/components/ui/hover-card.tsx) were marked as client components for App Router MDX usage.
+- [x] Remove the standalone RSS build script, [scripts/gen-rss.js](/Volumes/990pro/Workspace/Github/blog/scripts/gen-rss.js), and [public/feed.xml](/Volumes/990pro/Workspace/Github/blog/public/feed.xml); serve the feed from [app/feed.xml/route.ts](/Volumes/990pro/Workspace/Github/blog/app/feed.xml/route.ts).
+- [x] Keep [app/api/og/route.tsx](/Volumes/990pro/Workspace/Github/blog/app/api/og/route.tsx) and verify the route after the root layout and metadata changes.
+- [x] Replace `react-cusdis` with the built-in `nextra-theme-blog` comments component via [@/components/cusdis.tsx](/Volumes/990pro/Workspace/Github/blog/@/components/cusdis.tsx), removing the stale React 17 peer dependency before the React 19 step.
+- [x] Phase 2 validation: `pnpm build`, `pnpm audit --prod --json`, and runtime HTTP checks for `/`, `/posts`, `/posts/2021/2020-final`, `/uses`, `/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93`, `/feed.xml`, and `/api/og?title=test` all passed.
+- [x] Phase 4: migrate styling from Tailwind 3 to Tailwind 4 as part of the Nextra 4 transition.
+- [x] Update [styles/globals.css](/Volumes/990pro/Workspace/Github/blog/styles/globals.css) from `@tailwind` directives to the Tailwind 4 import model and include `nextra-theme-blog/style.css`.
+- [x] Update [postcss.config.js](/Volumes/990pro/Workspace/Github/blog/postcss.config.js) to use `@tailwindcss/postcss`.
+- [x] Revisit [tailwind.config.ts](/Volumes/990pro/Workspace/Github/blog/tailwind.config.ts) for the App Router + `content/**` structure and remove obsolete Tailwind 3-only assumptions.
+- [ ] Phase 3: upgrade to `react@19`, `react-dom@19`, `@types/react@19`, and `@types/react-dom@19` now that `Next 15 + App Router + Nextra 4 + Tailwind 4` are in place.
+- [ ] Audit React 19 compatibility in custom client components and App Router pages. The known `react-cusdis` peer-range blocker has already been removed.
 - [ ] Final migration validation:
-  build the site,
-  confirm generated routes and metadata,
-  compare post URLs against production paths,
-  verify RSS output,
-  and spot-check interactive MDX components on desktop and mobile.
+  compare generated routes against production paths,
+  manually spot-check interactive MDX components on desktop and mobile,
+  and confirm comments/theme switching behavior in the browser.

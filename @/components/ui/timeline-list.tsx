@@ -1,3 +1,5 @@
+'use client'
+
 import * as React from 'react'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from './hover-card'
 import { Timeline } from '@icon-park/react'
