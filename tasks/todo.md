@@ -48,7 +48,41 @@
 - [x] Browser validation for the transitions fix: verified `About -> Blog -> post -> Back -> Uses -> About` with `agent-browser` against the local dev server and no runtime timeout overlay appeared.
 - [x] Replace the theme package Cusdis helper with a local controlled embed in [@/components/cusdis.tsx](/Volumes/990pro/Workspace/Github/blog/@/components/cusdis.tsx) to avoid the `null.postMessage` runtime error during comment initialization on post pages.
 - [x] Dev-browser validation for the Cusdis fix: opened `/posts/2021/2020-final` on the local Next dev server and confirmed the page rendered without the previous runtime error overlay.
+- [x] Reset the Cusdis iframe's default browser height in [@/components/cusdis.tsx](/Volumes/990pro/Workspace/Github/blog/@/components/cusdis.tsx) so the comments area is no longer visually capped by the default `150px` iframe height before Cusdis posts its real size.
 - [ ] Final migration validation:
   compare generated routes against production paths,
   manually spot-check interactive MDX components on desktop and mobile,
   and confirm comments/theme switching behavior in the browser.
+
+# Catch-All Route Investigation
+
+## Plan
+
+- [x] Inspect the App Router catch-all page and Nextra `importPage()` resolution path.
+- [x] Verify whether dev-only `/_next/...hot-update.json` requests can plausibly reach `app/[[...mdxPath]]/page.tsx`.
+- [x] Separate likely cache/runtime corruption signals from route/code issues.
+- [x] Record whether a `_next` short-circuit is a safe fix or only a defensive mask.
+
+## Review
+
+- Verified locally with `pnpm exec next dev -p 3002` plus a direct request to `/_next/static/webpack/test.webpack.hot-update.json`.
+- The request reached `app/[[...mdxPath]]/page.tsx`, invoked both `generateMetadata()` and `Page()`, and produced the same Nextra errors at lines 61 and 69 before rendering the not-found HTML response.
+- `nextra/pages` resolves routes by looking up `RouteToFilepath[pathSegments.join('/')]`; for unknown paths this becomes `undefined`, which is why the logged failure is `Cannot find module './undefined'`.
+- No rewrites, middleware, `basePath`, or `assetPrefix` were found in `next.config.mjs`, so the fallthrough is not caused by custom route config in this repo.
+- Conclusion: the earlier missing vendor chunk / webpack cache rename errors still point to a dev-cache or stale-HMR problem, while the catch-all route is a secondary robustness issue that turns those bad internal requests into noisy Nextra logs.
+
+# Cusdis Height Follow-Up
+
+## Plan
+
+- [x] Replace the iframe `height = 0` workaround in [@/components/cusdis.tsx](/Volumes/990pro/Workspace/Github/blog/@/components/cusdis.tsx) with a container-level collapse that waits for Cusdis' real `resize` message.
+- [x] Keep theme syncing and route re-initialization intact without forcing the iframe itself to an invalid hidden height.
+- [x] Re-run `pnpm build` to confirm the comment embed change does not regress the app build.
+
+## Review
+
+- Reworked [@/components/cusdis.tsx](/Volumes/990pro/Workspace/Github/blog/@/components/cusdis.tsx) so the comments wrapper stays collapsed only until the embedded `srcdoc` iframe reports a measurable document height.
+- Removed the iframe `height = 0` override entirely; the parent page now reads the iframe document's real height directly and writes that height back to the iframe, which avoids the browser's default `150px` placeholder without hiding the embed permanently.
+- Split comment lifecycle handling so route changes still call `window.CUSDIS.initial()` and theme changes only call `window.CUSDIS.setTheme()`, avoiding unnecessary iframe reinitialization during theme toggles.
+- `pnpm build` passed after the change.
+- Production-browser validation passed against `next start`: the article page at `/posts/2021/2020-final` now shows the Cusdis form at the bottom again instead of leaving the section collapsed.
