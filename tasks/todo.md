@@ -103,3 +103,18 @@
 - Replaced the fragile iframe-document probing with a lightweight observer that only watches the Cusdis iframe's own inline `style.height`, keeps the wrapper collapsed until Cusdis sets a real height, and still re-initializes comments correctly on route changes and theme changes.
 - Added a reserved-path guard in [app/[[...mdxPath]]/page.tsx](/Volumes/990pro/Workspace/Github/blog/app/[[...mdxPath]]/page.tsx) so internal requests like `/_next/*`, `/_vercel/*`, and `/.well-known/*` short-circuit to `notFound()` instead of falling into Nextra's `importPage()` lookup.
 - Verification passed with `pnpm build`, plus browser-level production checks against local `next start`: `/posts/2021/2020-final -> /uses` and `/posts/2021/2020-final -> /posts` both completed without any `Application error` or `client-side exception` text appearing in the page body.
+
+# Cusdis Visibility Fallback
+
+## Plan
+
+- [x] Remove the fragile collapse-and-measure flow from [@/components/cusdis.tsx](/Volumes/990pro/Workspace/Github/blog/@/components/cusdis.tsx).
+- [x] Keep route re-initialization and theme syncing, but fall back to a visible placeholder height so the embed never disappears.
+- [x] Re-run a production build and browser checks for both comment visibility and route switching.
+
+## Review
+
+- Simplified [@/components/cusdis.tsx](/Volumes/990pro/Workspace/Github/blog/@/components/cusdis.tsx) to stop observing iframe height entirely; the component now keeps a conservative `minHeight` placeholder and lets Cusdis manage its own final size.
+- Kept the existing `window.CUSDIS.initial()` call on route changes and `window.CUSDIS.setTheme()` on theme changes, so the earlier navigation crash fix remains in place without the brittle DOM probing.
+- `pnpm build` passed after the fallback change.
+- Browser validation against local `next start` showed the comment form visible again at the bottom of `/posts/2021/2020-final`, and the route change `/posts/2021/2020-final -> /uses` still completed without any `Application error` or `client-side exception` text.

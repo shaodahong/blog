@@ -8,3 +8,4 @@
 - When hiding placeholder space for iframe embeds, collapse the parent container instead of forcing the iframe's own height to `0`; otherwise the embed may never become visible even after its script initializes.
 - Cusdis uses a `srcdoc` iframe, so the parent page can measure the embedded document height directly; prefer syncing from the iframe's actual document height over relying on third-party resize callbacks alone.
 - For client embeds on content pages, verify both "page renders" and "navigating away from that page" in production mode; route-leave failures can hide until the embed's cleanup or observer logic runs during client transitions.
+- When a Cusdis sizing tweak trades off reliability against polish, favor a visible placeholder or `min-height` fallback over aggressive collapse logic; "always visible" is the first requirement.
