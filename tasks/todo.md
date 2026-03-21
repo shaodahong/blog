@@ -43,8 +43,12 @@
 - [x] Revisit [tailwind.config.ts](/Volumes/990pro/Workspace/Github/blog/tailwind.config.ts) for the App Router + `content/**` structure and remove obsolete Tailwind 3-only assumptions.
 - [x] Phase 3: upgrade to `react@19`, `react-dom@19`, `@types/react@19`, and `@types/react-dom@19` now that `Next 15 + App Router + Nextra 4 + Tailwind 4` are in place.
 - [x] Audit React 19 compatibility in custom client components and App Router pages. The dependency upgrade to `react@19.2.4`, `react-dom@19.2.4`, `@types/react@19.2.14`, and `@types/react-dom@19.2.3` builds cleanly on the current codebase, and `pnpm audit --prod --json` still reports `0` vulnerabilities.
+- [x] Scope `next-view-transitions` to lighter navigation paths by replacing heavy post-detail/list/back interactions with native Next navigation in local blog components, while keeping the top-level navbar transitions.
+- [x] Add [app/loading.tsx](/Volumes/990pro/Workspace/Github/blog/app/loading.tsx) so route changes have a lightweight fallback available before heavy MDX content finishes rendering.
+- [x] Browser validation for the transitions fix: verified `About -> Blog -> post -> Back -> Uses -> About` with `agent-browser` against the local dev server and no runtime timeout overlay appeared.
+- [x] Replace the theme package Cusdis helper with a local controlled embed in [@/components/cusdis.tsx](/Volumes/990pro/Workspace/Github/blog/@/components/cusdis.tsx) to avoid the `null.postMessage` runtime error during comment initialization on post pages.
+- [x] Dev-browser validation for the Cusdis fix: opened `/posts/2021/2020-final` on the local Next dev server and confirmed the page rendered without the previous runtime error overlay.
 - [ ] Final migration validation:
   compare generated routes against production paths,
   manually spot-check interactive MDX components on desktop and mobile,
-  confirm comments/theme switching behavior in the browser,
-  and resolve or deliberately scope the `next-view-transitions` route-timeout issue before enabling transitions broadly.
+  and confirm comments/theme switching behavior in the browser.

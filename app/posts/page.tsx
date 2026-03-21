@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { PostCard } from 'nextra-theme-blog'
 
+import { PostCard } from '@/components/blog/post-card'
 import { getPosts, getTags } from './get-posts'
 
 export const metadata = {
@@ -31,7 +31,7 @@ export default async function PostsPage() {
         ))}
       </div>
       {posts.map(post => (
-        <PostCard key={post.route} post={post as any} />
+        <PostCard key={post.route} post={post} />
       ))}
     </div>
   )

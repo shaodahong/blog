@@ -1,5 +1,4 @@
-import { PostCard } from 'nextra-theme-blog'
-
+import { PostCard } from '@/components/blog/post-card'
 import { getPosts, getPostTags, getTags } from '../../posts/get-posts'
 
 type TagPageProps = {
@@ -35,7 +34,7 @@ export default async function TagPage(props: TagPageProps) {
           getPostTags(post).includes(decodeURIComponent(params.tag))
         )
         .map(post => (
-          <PostCard key={post.route} post={post as any} />
+          <PostCard key={post.route} post={post} />
         ))}
     </>
   )
