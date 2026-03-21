@@ -52,88 +52,15 @@ export function Cusdis() {
     }
 
     let iframeObserver: MutationObserver | null = null
-    let contentObserver: MutationObserver | null = null
-    let resizeObserver: ResizeObserver | null = null
-    let detachIframeLoad: (() => void) | null = null
-    let heightSyncTimers: number[] = []
+    let styleObserver: MutationObserver | null = null
 
-    const cleanupEmbeddedObservers = () => {
-      detachIframeLoad?.()
-      detachIframeLoad = null
-      contentObserver?.disconnect()
-      contentObserver = null
-      resizeObserver?.disconnect()
-      resizeObserver = null
-      heightSyncTimers.forEach((timer) => window.clearTimeout(timer))
-      heightSyncTimers = []
+    const cleanupIframeObserver = () => {
+      styleObserver?.disconnect()
+      styleObserver = null
     }
 
-    const syncIframeHeight = (iframe: HTMLIFrameElement) => {
-      const doc = iframe.contentDocument
-
-      if (!doc) {
-        return
-      }
-
-      const nextHeight = Math.max(
-        doc.documentElement?.scrollHeight ?? 0,
-        doc.body?.scrollHeight ?? 0,
-        doc.documentElement?.offsetHeight ?? 0,
-        doc.body?.offsetHeight ?? 0
-      )
-
-      if (nextHeight > 0) {
-        iframe.style.height = `${nextHeight}px`
-        setHasMeasuredHeight(true)
-      }
-    }
-
-    const watchEmbeddedContent = (iframe: HTMLIFrameElement) => {
-      cleanupEmbeddedObservers()
-
-      const attachContentObservers = () => {
-        const doc = iframe.contentDocument
-
-        if (!doc) {
-          return
-        }
-
-        syncIframeHeight(iframe)
-
-        const target = doc.body ?? doc.documentElement
-
-        if (!target) {
-          return
-        }
-
-        contentObserver = new MutationObserver(() => syncIframeHeight(iframe))
-        contentObserver.observe(target, {
-          attributes: true,
-          characterData: true,
-          childList: true,
-          subtree: true,
-        })
-
-        if (typeof ResizeObserver !== 'undefined') {
-          resizeObserver = new ResizeObserver(() => syncIframeHeight(iframe))
-          resizeObserver.observe(target)
-        }
-      }
-
-      const onLoad = () => attachContentObservers()
-
-      iframe.addEventListener('load', onLoad)
-      detachIframeLoad = () => iframe.removeEventListener('load', onLoad)
-
-      attachContentObservers()
-      heightSyncTimers = [
-        window.setTimeout(() => syncIframeHeight(iframe), 300),
-        window.setTimeout(() => syncIframeHeight(iframe), 1000),
-      ]
-    }
-
-    const watchIframeHeight = () => {
-      cleanupEmbeddedObservers()
+    const attachIframeObserver = () => {
+      cleanupIframeObserver()
 
       const iframe = thread.querySelector<HTMLIFrameElement>('iframe')
 
@@ -141,18 +68,32 @@ export function Cusdis() {
         return
       }
 
-      watchEmbeddedContent(iframe)
+      const syncMeasuredHeight = () => {
+        const height = Number.parseFloat(iframe.style.height || '0')
+
+        if (height > 0) {
+          setHasMeasuredHeight(true)
+        }
+      }
+
+      syncMeasuredHeight()
+
+      styleObserver = new MutationObserver(syncMeasuredHeight)
+      styleObserver.observe(iframe, {
+        attributeFilter: ['style'],
+        attributes: true,
+      })
     }
 
-    watchIframeHeight()
+    attachIframeObserver()
 
-    iframeObserver = new MutationObserver(watchIframeHeight)
+    iframeObserver = new MutationObserver(attachIframeObserver)
     iframeObserver.observe(thread, {
       childList: true,
     })
 
     return () => {
-      cleanupEmbeddedObservers()
+      cleanupIframeObserver()
       iframeObserver?.disconnect()
     }
   }, [])
@@ -164,6 +105,7 @@ export function Cusdis() {
 
     if (!bootstrappedRef.current) {
       bootstrappedRef.current = true
+      window.CUSDIS?.initial?.()
       return
     }
 

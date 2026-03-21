@@ -7,3 +7,4 @@
 - For iframe-based embeds like Cusdis, remember the browser default iframe height can look like a fixed-height layout bug even when no explicit CSS sets it; inspect the rendered iframe behavior, not just local styles.
 - When hiding placeholder space for iframe embeds, collapse the parent container instead of forcing the iframe's own height to `0`; otherwise the embed may never become visible even after its script initializes.
 - Cusdis uses a `srcdoc` iframe, so the parent page can measure the embedded document height directly; prefer syncing from the iframe's actual document height over relying on third-party resize callbacks alone.
+- For client embeds on content pages, verify both "page renders" and "navigating away from that page" in production mode; route-leave failures can hide until the embed's cleanup or observer logic runs during client transitions.

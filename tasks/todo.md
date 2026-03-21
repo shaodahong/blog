@@ -86,3 +86,20 @@
 - Split comment lifecycle handling so route changes still call `window.CUSDIS.initial()` and theme changes only call `window.CUSDIS.setTheme()`, avoiding unnecessary iframe reinitialization during theme toggles.
 - `pnpm build` passed after the change.
 - Production-browser validation passed against `next start`: the article page at `/posts/2021/2020-final` now shows the Cusdis form at the bottom again instead of leaving the section collapsed.
+
+# Production Route Error
+
+## Plan
+
+- [x] Reproduce the published-site client-side route failure and capture the exact failing navigation path and console/runtime symptom.
+- [x] Inspect current route-transition and catch-all route handling to identify code paths that can fail only after deployment.
+- [x] Implement the minimal fix for the client-side exception without regressing intended navigation behavior.
+- [x] Verify the fix with a production build plus browser-level route navigation checks.
+
+## Review
+
+- Reproduced the failure on the published site and locally against `next start`: navigating from `/posts/2021/2020-final` to top-level routes like `/uses` could end in the generic `Application error: a client-side exception has occurred while loading biewen.me`.
+- Isolated the crash to the local Cusdis embed in [@/components/cusdis.tsx](/Volumes/990pro/Workspace/Github/blog/@/components/cusdis.tsx). The earlier height-sync implementation reached into the embedded iframe document and attached deep observers; removing `bottomContent={<Cusdis />}` made the route error disappear immediately.
+- Replaced the fragile iframe-document probing with a lightweight observer that only watches the Cusdis iframe's own inline `style.height`, keeps the wrapper collapsed until Cusdis sets a real height, and still re-initializes comments correctly on route changes and theme changes.
+- Added a reserved-path guard in [app/[[...mdxPath]]/page.tsx](/Volumes/990pro/Workspace/Github/blog/app/[[...mdxPath]]/page.tsx) so internal requests like `/_next/*`, `/_vercel/*`, and `/.well-known/*` short-circuit to `notFound()` instead of falling into Nextra's `importPage()` lookup.
+- Verification passed with `pnpm build`, plus browser-level production checks against local `next start`: `/posts/2021/2020-final -> /uses` and `/posts/2021/2020-final -> /posts` both completed without any `Application error` or `client-side exception` text appearing in the page body.

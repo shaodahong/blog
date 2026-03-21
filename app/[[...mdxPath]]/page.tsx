@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 import { generateStaticParamsFor, importPage } from 'nextra/pages'
 
 import { Cusdis } from '@/components/cusdis'
@@ -13,6 +14,7 @@ type PageProps = {
 export const generateStaticParams = generateStaticParamsFor('mdxPath')
 
 const Wrapper = getMDXComponents().wrapper
+const RESERVED_PATH_PREFIXES = new Set(['_next', '_vercel', '.well-known'])
 
 function getRoute(pathSegments?: string[]) {
   if (!pathSegments?.length) {
@@ -20,6 +22,14 @@ function getRoute(pathSegments?: string[]) {
   }
 
   return `/${pathSegments.join('/')}`
+}
+
+function assertContentRoute(pathSegments?: string[]) {
+  const firstSegment = pathSegments?.[0]
+
+  if (firstSegment && RESERVED_PATH_PREFIXES.has(firstSegment)) {
+    notFound()
+  }
 }
 
 function getPageMetadata(frontMatter: Record<string, unknown>, route: string): Metadata {
@@ -58,6 +68,7 @@ function getPageMetadata(frontMatter: Record<string, unknown>, route: string): M
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const params = await props.params
+  assertContentRoute(params.mdxPath)
   const { metadata } = await importPage(params.mdxPath ?? [])
 
   return getPageMetadata(metadata as Record<string, unknown>, getRoute(params.mdxPath))
@@ -65,6 +76,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 
 export default async function Page(props: PageProps) {
   const params = await props.params
+  assertContentRoute(params.mdxPath)
   const route = getRoute(params.mdxPath)
   const { default: MDXContent, toc, metadata, sourceCode } = await importPage(
     params.mdxPath ?? []
