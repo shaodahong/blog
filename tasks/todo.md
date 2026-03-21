@@ -41,9 +41,10 @@
 - [x] Update [styles/globals.css](/Volumes/990pro/Workspace/Github/blog/styles/globals.css) from `@tailwind` directives to the Tailwind 4 import model and include `nextra-theme-blog/style.css`.
 - [x] Update [postcss.config.js](/Volumes/990pro/Workspace/Github/blog/postcss.config.js) to use `@tailwindcss/postcss`.
 - [x] Revisit [tailwind.config.ts](/Volumes/990pro/Workspace/Github/blog/tailwind.config.ts) for the App Router + `content/**` structure and remove obsolete Tailwind 3-only assumptions.
-- [ ] Phase 3: upgrade to `react@19`, `react-dom@19`, `@types/react@19`, and `@types/react-dom@19` now that `Next 15 + App Router + Nextra 4 + Tailwind 4` are in place.
-- [ ] Audit React 19 compatibility in custom client components and App Router pages. The known `react-cusdis` peer-range blocker has already been removed.
+- [x] Phase 3: upgrade to `react@19`, `react-dom@19`, `@types/react@19`, and `@types/react-dom@19` now that `Next 15 + App Router + Nextra 4 + Tailwind 4` are in place.
+- [x] Audit React 19 compatibility in custom client components and App Router pages. The dependency upgrade to `react@19.2.4`, `react-dom@19.2.4`, `@types/react@19.2.14`, and `@types/react-dom@19.2.3` builds cleanly on the current codebase, and `pnpm audit --prod --json` still reports `0` vulnerabilities.
 - [ ] Final migration validation:
   compare generated routes against production paths,
   manually spot-check interactive MDX components on desktop and mobile,
-  and confirm comments/theme switching behavior in the browser.
+  confirm comments/theme switching behavior in the browser,
+  and resolve or deliberately scope the `next-view-transitions` route-timeout issue before enabling transitions broadly.
